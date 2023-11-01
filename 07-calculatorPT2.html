@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css"/>
+    <title>CALCULATOR</title>
+  </head>
+  <style>
+    p{margin-left: 10px;}
+  </style>
+  <body>
+    <p>CALCULATOR</p>
+    <p class="js-calculation"></p>
+    <!-- ROW 1 -->
+    <p>
+      <button onclick="
+        updateCalculationString('1');
+      ">1</button>
+
+      <button onclick="
+        updateCalculationString('2');
+      ">2</button>
+
+      <button onclick="
+        updateCalculationString('3');
+      ">3</button>
+
+      <button onclick="
+        updateCalculationString(' + ');
+      ">+</button>
+    </p>
+
+
+
+    <!-- ROW 2 -->
+    <p>
+      <button onclick="
+        updateCalculationString('4');
+      ">4</button>
+
+      <button onclick="
+        updateCalculationString('5');
+      ">5</button>
+
+      <button onclick="
+        updateCalculationString('6');
+      ">6</button>
+
+      <button onclick="
+        updateCalculationString(' - ');
+      ">-</button>
+    </p>
+
+
+    
+    <!-- ROW 3 -->
+    <p>
+      <button onclick="
+        updateCalculationString('7');
+      ">7</button>
+
+      <button onclick="
+        updateCalculationString('8');
+      ">8</button>
+
+      <button onclick="
+        updateCalculationString('9');
+      ">9</button>
+
+      <button onclick="
+       updateCalculationString(' * ');
+      ">*</button>
+    </p>
+
+
+
+
+    <!-- ROW 4 -->
+    <p>
+      <button onclick="
+        updateCalculationString('0');
+      ">0</button>
+
+      <button onclick="
+        updateCalculationString('.');
+      ">.</button>
+
+      <button onclick="
+        //eval converts the calculation string into actual math
+        calculation=eval(calculation);
+        localStorage.setItem('calculationString', calculation); //save it
+        document.querySelector('.js-calculation').innerHTML = calculation; //print it
+      ">=</button>
+
+      <button onclick="
+        updateCalculationString(' / ');
+      ">/</button>
+    </p>
+
+
+
+    <!-- ROW 5 -->
+    <p>
+      <button onclick="
+        calculation='';
+        localStorage.setItem('calculationString', calculation); //save it
+        document.querySelector('.js-calculation').innerHTML = calculation; //clear/print it
+      ">CLEAR</button>
+    </p>
+
+
+    <script>
+      //variables
+      let calculation = localStorage.getItem('calculationString'); //grab from local storage
+      document.querySelector('.js-calculation').innerHTML = calculation; //print were left off
+
+
+      //updateCalulation adds chosen string to calulation string and prints updated calulation string 
+      function updateCalculationString(userInput){
+        calculation += userInput;
+        document.querySelector('.js-calculation').innerHTML = calculation;
+        localStorage.setItem('calculationString', calculation);
+      }
+      localStorage.setItem('calculationString', calculation);
+
+    </script>
+
+    <!-- <script src="main.js"></script> -->
+  </body>
+</html>
